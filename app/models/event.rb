@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
-    belongs_to :movie
-    has_many :seats, dependent: :destroy
+  belongs_to :movie
+  has_many :seats, dependent: :destroy
 
     validates_presence_of :movie_id, :date, :time_start, :time_end, :capacity, :hall
 
@@ -16,13 +18,13 @@ class Event < ApplicationRecord
 
     end
 
-    def update_seats
-        while capacity != seats.length
-            if capacity > seats.length
-                add_seat
-            else
-                seats.last.delete
-            end
-        end
+  def update_seats
+    while capacity != seats.length
+      if capacity > seats.length
+        add_seat
+      else
+        seats.last.delete
+      end
     end
+  end
 end
