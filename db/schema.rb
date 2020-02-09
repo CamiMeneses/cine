@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20200205205821) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: :cascade do |t|
     t.integer "movie_id", null: false
     t.date "date", null: false
@@ -66,4 +69,5 @@ ActiveRecord::Schema.define(version: 20200205205821) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "movies"
 end
