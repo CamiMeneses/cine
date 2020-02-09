@@ -14,4 +14,3 @@ in_time = Movie.create(name: "In time",duration: 109, synopsis: "Un hombre es ac
 
 # Creates 20 events /w 20 movies associated with it
 FactoryBot.create_list(:event, 20)
-
