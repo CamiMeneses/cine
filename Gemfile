@@ -42,6 +42,7 @@ group :development, :test do
 # Use Puma as the app server
   gem 'faker'
   gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.9'
 end
 
 group :development do
@@ -49,5 +50,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :test do
+  gem 'shoulda-matchers'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
