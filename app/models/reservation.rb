@@ -4,6 +4,8 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :seat
 
+  validates_presence_of :user, :seat
+
   def event
     seat.event
   end
