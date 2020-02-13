@@ -5,12 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
+gem 'rails', '~> 6.0', '>= 6.0.2.1'
 # Use sqlite3 as the database for Active Record
 
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3', '>= 4.3.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,13 +23,13 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
-
+gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'pg', '~> 1.2', '>= 1.2.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -40,14 +39,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem "pg"
 # Use Puma as the app server
   gem 'faker'
   gem 'factory_bot_rails'
-end
-
-group :production do
-  gem "pg"
 end
 
 group :development do
