@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MoviesController < ApplicationController
+  before_action :movie, only: [:show, :edit, :update]
+
   def index
     @movie = Movie.all
     @user_rol = User.find(current_user.id).user_type
@@ -8,7 +10,6 @@ class MoviesController < ApplicationController
 
   def show
     @user_rol = User.find(current_user.id).user_type
-    @movie = Movie.find(params[:id])
   end
 
   def new
@@ -17,27 +18,29 @@ class MoviesController < ApplicationController
 
   def create
     Movie.create(movie_params)
+
     redirect_to movies_path
   end
 
-  def edit
-    @movie = Movie.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @movie = Movie.find(params[:id])
     @movie.update(movie_params)
+
     redirect_to movies_path
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy
+    movie.destroy
 
     redirect_to movies_path
   end
 
   private
+
+  def movie
+    @movie ||= Movie.find(params[:id])
+  end
 
   def movie_params
     params.require(:movie).permit(:name, :duration, :synopsis, :genre, :trailer, :image, :big_image)
@@ -45,7 +48,6 @@ class MoviesController < ApplicationController
 
   def rol
     user_rol = User.find(current_user.id).user_type
-
     user_rol == 'admin'
   end
 end
