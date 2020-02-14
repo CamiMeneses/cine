@@ -2,15 +2,7 @@
 
 class Reservation < ApplicationRecord
   belongs_to :user
-  belongs_to :seat
+  has_many :seats
 
   validates_presence_of :user, :seat
-
-  def event
-    seat.event
-  end
-
-  def movie
-    event.movie
-  end
 end

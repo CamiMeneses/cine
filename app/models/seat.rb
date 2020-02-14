@@ -5,4 +5,8 @@ class Seat < ApplicationRecord
   belongs_to :reservation, optional: true
 
   validates_presence_of :name, :event_id, :price, :status
+
+  def movie
+    event.movie
+  end
 end

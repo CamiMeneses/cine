@@ -3,7 +3,7 @@
 class ReservationsController < ApplicationController
   def index
     user = User.find(params[:user_id])
-    @reservations = user.reservations.includes(:seat)
+    @reservations = user.reservations.includes(seats: [event: :movie])
   end
 
   def create
