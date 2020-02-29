@@ -1,12 +1,10 @@
 <%@reservations.each do |res|%>
-  <%res.seats.each do |seat|%>
-    <div class="reservaciones">
-      <%= seat.movie.name %><br>
-      Sala: <%= seat.event.hall%><br>
-      Silla: <%= seat.name %><br>
-      Precio: $<%= seat.price %><br>
-      Fecha: <%= seat.event.date %><br>
-      Hora: <%= res_start_time seat %><br>
+  <div class="reservaciones">
+    <%= res.movie.name %><br>
+    Sala: <%=res.event.hall%>
+    Silla: <%= res.seat.name %><br>
+    Precio:  $<%= res.seat.price %><br>
+    Fecha:  <%= res.event.date %><br>
+    Hora:  <%= res_start_time res %><br>
     </div>
-  <%end%>
 <%end%>
