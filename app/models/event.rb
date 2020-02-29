@@ -3,8 +3,11 @@
 class Event < ApplicationRecord
   belongs_to :movie
   has_many :seats, dependent: :destroy
+  has_many :reservations, through: :seats
 
   validates_presence_of :movie_id, :date, :time_start, :time_end, :capacity, :hall
+
+  before_create :set_time_end
 
   def next_seat_name
     alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -25,5 +28,9 @@ class Event < ApplicationRecord
         seats.last.delete
       end
     end
+  end
+
+  def set_time_end
+    self.time_end = self.time_start + movie.duration.minutes
   end
 end
